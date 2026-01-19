@@ -43,12 +43,12 @@ uv run main.py
 リモート
 
 ```text
-animate img*.ppm &
+animate out/img*.ppm &
 ```
 
 or
 
 ```text
-convert -delay 5 img*.ppm animate1.gif
+convert -delay 5 out/img*.ppm animate1.gif
 eog animate1.gif &
 ```

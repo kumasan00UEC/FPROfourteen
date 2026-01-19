@@ -11,7 +11,9 @@
 ### c言語のコンパイル法
 
 ```text
-gcc animate1.c img.c -lm
+gcc animate1.c img.c -lm -o animate.out
+
+./animate.out
 ```
 
 ### `ppm`から`gif`

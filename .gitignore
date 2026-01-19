@@ -19,7 +19,7 @@ wheels/
 *.dylib
 
 # Image files
-out
+out/
 *.ppm
 
 # GIF files

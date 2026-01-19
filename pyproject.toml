@@ -1,9 +1,7 @@
 [project]
 name = "fprofourteen"
 version = "0.1.0"
-description = "Add your description here"
+description = "PPMファイルからGIFアニメーションを生成するツール。C言語で生成されたアニメーション画像をPillow(PIL)を使用してGIF形式に変換します。"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = [
-    "pillow>=12.1.0",
-]
+dependencies = ["pillow>=12.1.0"]

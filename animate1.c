@@ -1,4 +1,3 @@
-
 // animate1 --- create animation using img lib.
 #include "img.h"
 

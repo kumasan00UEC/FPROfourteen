@@ -34,6 +34,21 @@ gcc animate1.c img.c -lm -o animate.out
 
 ### `ppm`から`gif`
 
+ローカル
+
 ```text
 uv run main.py
+```
+
+リモート
+
+```text
+animate img*.ppm &
+```
+
+or
+
+```text
+convert -delay 5 img*.ppm animate1.gif
+eog animate1.gif &
 ```

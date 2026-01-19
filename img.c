@@ -3,6 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifdef _WIN32
+#include <direct.h>
+#define MKDIR(dir) _mkdir(dir)
+#else
+#include <sys/stat.h>
+#include <sys/types.h>
+#define MKDIR(dir) mkdir(dir, 0755)
+#endif
+
 static unsigned char buf[HEIGHT][WIDTH][3];
 static int filecnt = 0;
 static char fname[100];
@@ -17,6 +26,16 @@ void img_clear(void) {
 }
 
 void img_write(void) {
+  // outディレクトリが存在しない場合は作成
+#ifdef _WIN32
+  _mkdir("out");
+#else
+  struct stat st = {0};
+  if (stat("out", &st) == -1) {
+    mkdir("out", 0755);
+  }
+#endif
+
   sprintf(fname, "out/img%04d.ppm", ++filecnt);
   FILE* f = fopen(fname, "wb");
   if (f == NULL) {

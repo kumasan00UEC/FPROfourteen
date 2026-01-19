@@ -1,0 +1,9 @@
+# Base style is Google
+BasedOnStyle: Google
+
+# Indentation settings
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+
+ColumnLimit: 120

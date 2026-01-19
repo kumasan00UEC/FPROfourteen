@@ -8,6 +8,22 @@
 
 ## 使用方法
 
+### `git`の使い方
+
+リモートの変更をローカルに取得したい時
+
+```text
+git pull
+```
+
+ローカルの変更をリモートに共有したい時
+
+```text
+git add .
+git commit -m "コミットメッセージ"
+git push origin main
+```
+
 ### c言語のコンパイル法
 
 ```text

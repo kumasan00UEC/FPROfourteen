@@ -18,13 +18,13 @@ QuizKnockのアイキャッチ
 
 リモートの変更をローカルに取得したい時
 
-```text
+```sh
 git pull
 ```
 
 ローカルの変更をリモートに共有したい時
 
-```text
+```sh
 git add .
 git commit -m "コミットメッセージ"
 git push origin main
@@ -32,7 +32,7 @@ git push origin main
 
 ### c言語のコンパイル法
 
-```text
+```sh
 gcc animate1.c img.c -lm -o animate.out
 
 ./animate.out
@@ -42,19 +42,19 @@ gcc animate1.c img.c -lm -o animate.out
 
 ローカル
 
-```text
+```sh
 uv run main.py
 ```
 
 リモート
 
-```text
+```sh
 animate out/img*.ppm &
 ```
 
 or
 
-```text
+```sh
 convert -delay 5 out/img*.ppm animate1.gif
 eog animate1.gif &
 ```

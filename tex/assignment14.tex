@@ -1,0 +1,82 @@
+\documentclass[12pt,a4j]{jarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{listings}
+\usepackage{jlisting}
+
+
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
+
+\begin{document}
+\title{基礎プログラミングおよび演習 レポート ＃14}
+% \author{2512125, 角谷拓武 (2512145: 田中琉登, 2512225: 宮崎昭徳)}
+% \author{2512145, 田中琉登 (2512125: 角谷拓武, 2512225: 宮崎昭徳)}
+% \author{2512225, 宮崎昭徳 (2512125: 角谷拓武, 2512145: 田中琉登)}
+\maketitle
+
+\section{構想・計画・設計}
+
+% (どのような構想で絵を生成したか、プログラムはどう設計したか)
+
+\section{プログラムコード}
+
+% (vervatim環境の中にプログラムのソースコードを入れる)
+
+\lstinputlisting[caption=img.c,label=imgc]{../img.c}
+\lstinputlisting[caption=img.h,label=imgh]{../img.h}
+\lstinputlisting[caption=animate1.c,label=animate1.c]{../animate1.c}
+
+
+\section{プログラムの説明}
+
+% (プログラムのどの部分が何をしているかを説明する)
+
+\section{生成された動画の説明}
+
+% (画像を入れたい場合は下記で。mypicture.epsというファイル名は適宜変更)
+% \begin{center}
+% \includegraphics[width=12cm]{mypicture.eps}
+% \end{center}
+
+% (どのような動画という説明を書く。)
+% (動画ファイルはアップロードで提出。プログラムコードと動画が一致していること。)
+
+\section{開発過程の説明}
+
+% (誰が何を分担し、どのような過程を経てプログラムが完成したか。各作業の日時と担当者の記録があるとよい。)
+
+\section{考察}
+
+% (考察は必須かつ重要。課題をやって分かったこと、理解したことを整理して書く。)
+
+\section{アンケート}
+
+\subsection{Q1：うまく分担して課題プログラムを開発できましたか。}
+
+% (ここにQ1の回答を記入)
+
+\subsection{Q2：複数で分担する際に注意すべきことは何だと思いましたか。}
+
+% (ここにQ2の回答を記入)
+
+\subsection{Q3：ここまでの科目全体を通して、学べたこと、学びたかったけど学べなかったことは何ですか。その他感想や、この科目の今後改善した方がよいこと、今後も維持したことがよいこ との指摘もどうぞ。}
+
+% (ここにQ3の回答を記入)
+
+\end{document}

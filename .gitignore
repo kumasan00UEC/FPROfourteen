@@ -24,3 +24,9 @@ out/
 
 # GIF files
 *.gif
+
+# tex files
+*.aux
+*.dvi
+*.log
+*.pdf

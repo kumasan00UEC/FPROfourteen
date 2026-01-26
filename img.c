@@ -16,8 +16,12 @@ static unsigned char buf[HEIGHT][WIDTH][3];
 static int filecnt = 0;
 static char fname[100];
 
+/**
+ * 画像バッファを白色(255,255,255)でクリアする
+ */
 void img_clear(void) {
   int i, j;
+  // 全ピクセルを白で塗りつぶし
   for (j = 0; j < HEIGHT; ++j) {
     for (i = 0; i < WIDTH; ++i) {
       buf[j][i][0] = buf[j][i][1] = buf[j][i][2] = 255;
@@ -25,8 +29,12 @@ void img_clear(void) {
   }
 }
 
+/**
+ * 画像バッファをPPMファイルとして出力する
+ * ファイル名は連番で自動生成される（img0001.ppm, img0002.ppm...）
+ */
 void img_write(void) {
-  // outディレクトリが存在しない場合は作成
+  // 出力ディレクトリを作成
 #ifdef _WIN32
   _mkdir("out");
 #else
@@ -36,32 +44,53 @@ void img_write(void) {
   }
 #endif
 
+  // ファイル名を生成
   sprintf(fname, "out/img%04d.ppm", ++filecnt);
   FILE* f = fopen(fname, "wb");
   if (f == NULL) {
     fprintf(stderr, "can't open %s\n", fname);
     exit(1);
   }
+  // PPMヘッダーを出力
   fprintf(f, "P6\n%d %d\n255\n", WIDTH, HEIGHT);
+  // 画像データを出力
   fwrite(buf, sizeof(buf), 1, f);
   fclose(f);
 }
 
+/**
+ * 指定した座標にピクセルを描画する
+ * @param c 色情報
+ * @param x X座標
+ * @param y Y座標（下が0、上が正の値）
+ */
 void img_putpixel(struct color c, int x, int y) {
+  // 画面範囲外のチェック
   if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
     return;
   }
+  // Y座標を画像座標系に変換（上下反転）
   buf[HEIGHT - y - 1][x][0] = c.r;
   buf[HEIGHT - y - 1][x][1] = c.g;
   buf[HEIGHT - y - 1][x][2] = c.b;
 }
 
+/**
+ * 塗りつぶした円を描画する
+ * @param c 色情報
+ * @param x 中心のX座標
+ * @param y 中心のY座標
+ * @param r 半径
+ */
 void img_fillcircle(struct color c, double x, double y, double r) {
+  // 描画範囲を計算
   int imin = (int)(x - r - 1), imax = (int)(x + r + 1);
   int jmin = (int)(y - r - 1), jmax = (int)(y + r + 1);
   int i, j;
+  // 範囲内の全ピクセルをチェック
   for (j = jmin; j <= jmax; ++j) {
     for (i = imin; i <= imax; ++i) {
+      // 中心からの距離が半径以下なら描画
       if ((x - i) * (x - i) + (y - j) * (y - j) <= r * r) {
         img_putpixel(c, i, j);
       }
@@ -69,59 +98,69 @@ void img_fillcircle(struct color c, double x, double y, double r) {
   }
 }
 
-/* 比較関数 (qsort用) */
+/**
+ * 整数比較関数（qsort用）
+ * @param a 比較する要素1
+ * @param b 比較する要素2
+ * @return a-bの値（昇順ソート用）
+ */
 int cmp_int(const void* a, const void* b) { return (*(int*)a - *(int*)b); }
 
-/* スキャンラインアルゴリズムによる塗りつぶし */
-/* 頂点配列 ax, ay とその頂点数 n を受け取ります（四角形なら n=4） */
+/**
+ * スキャンライン法を使用して多角形を塗りつぶす
+ * @param c 色情報
+ * @param ax X座標の配列
+ * @param ay Y座標の配列
+ * @param n 頂点数
+ */
 void fill_scanline(struct color c, int* ax, int* ay, int n) {
   int i, j, y;
   int ymin = ay[0];
   int ymax = ay[0];
 
-  // 1. 全体のYの範囲（スキャン範囲）を求める
+  // Y座標の最小値と最大値を求める
   for (i = 1; i < n; i++) {
     if (ay[i] < ymin) ymin = ay[i];
     if (ay[i] > ymax) ymax = ay[i];
   }
 
-  // 交点X座標を格納するバッファ (四角形なら最大でも1行に2〜4点あれば十分)
-  // 複雑な多角形に対応するため少し大きめに確保するか、動的確保します
-  int nodeX[20];
+  // 交点のX座標を格納する配列を動的確保
+  int* nodeX = malloc(n * sizeof(int));
+  if (nodeX == NULL) {
+    fprintf(stderr, "Memory allocation failed\n");
+    return;
+  }
   int nodes;
 
-  // 2. Y座標を上から下（または下から上）へスキャン
+  // 各スキャンラインについて処理
   for (y = ymin; y < ymax; y++) {
     nodes = 0;
-    j = n - 1;  // 最後の頂点（iの直前の頂点として使用）
+    j = n - 1;
 
-    // 3. 全ての辺に対して、現在のスキャンライン y と交差するか判定
+    // 多角形の各辺とスキャンラインの交点を求める
     for (i = 0; i < n; i++) {
-      // 辺 (ax[i], ay[i]) - (ax[j], ay[j]) が現在のYをまたいでいるか？
-      // 頂点の二重カウントを防ぐため、一方は < で、もう一方は >= で判定する
       if ((ay[i] < y && ay[j] >= y) || (ay[j] < y && ay[i] >= y)) {
-        // 線形補間で交差するX座標を計算
-        // x = x1 + (y - y1) / (y2 - y1) * (x2 - x1)
+        // 線形補間で交点のX座標を計算
         nodeX[nodes++] = (int)(ax[i] + (double)(y - ay[i]) / (ay[j] - ay[i]) * (ax[j] - ax[i]));
       }
-      j = i;  // 次のループのために現在の頂点を保存
+      j = i;
     }
 
-    // 4. 求めたX座標を昇順（左から右）にソート
+    // 交点をX座標でソート
     qsort(nodeX, nodes, sizeof(int), cmp_int);
 
-    // 5. ペアごとにその間を塗りつぶす (偶数番目から奇数番目へ)
-    // 凸多角形の場合、nodesは通常2つになります
+    // 交点のペアごとに水平線を描画
     for (i = 0; i < nodes; i += 2) {
-      if (i + 1 >= nodes) break;  // 安全策
-
+      if (i + 1 >= nodes) break;
       int x_start = nodeX[i];
       int x_end = nodeX[i + 1];
 
-      // 横線を引く
       for (int x = x_start; x <= x_end; x++) {
         img_putpixel(c, x, y);
       }
     }
   }
+
+  // 動的に確保したメモリを解放
+  free(nodeX);
 }

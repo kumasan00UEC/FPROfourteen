@@ -8,3 +8,15 @@
 
 アサインメント用Texファイル。
 `img.h`,`img.c`,`animate1.c`を自動で取り込んでPDFを生成します。
+
+## コンパイル方法
+
+```sh
+platex activity14.tex
+dvipdfmx activity14.dvi
+```
+
+```sh
+platex assignment14.tex
+dvipdfmx assignment14.dvi
+```

@@ -1,5 +1,7 @@
 #define WIDTH 300
+#define XCENTER WIDTH / 2
 #define HEIGHT 200
+#define YCENTER HEIGHT / 2
 struct color {
   unsigned char r, g, b;
 };

@@ -110,6 +110,10 @@ void img_draw_filled_circle(struct Color color, double center_x, double center_y
  */
 void img_draw_ring(struct Color color, double center_x, double center_y, double outer_radius, double inner_radius,
                    int draw_mode) {
+  if (inner_radius > outer_radius) {
+    fprintf(stderr, "Error: inner_radius is larger than outer_radius\n");
+    return;
+  }
   int min_x = (int)(center_x - outer_radius - 1);
   int max_x = (int)(center_x + outer_radius + 1);
   int min_y = (int)(center_y - outer_radius - 1);
@@ -149,7 +153,7 @@ void img_draw_ring(struct Color color, double center_x, double center_y, double 
               outer_radius * outer_radius &&
           (center_x - x_pos) * (center_x - x_pos) + (center_y - y_pos) * (center_y - y_pos) >=
               inner_radius * inner_radius &&
-          center_y >= (center_x - x_pos) + y_pos) {
+          center_y <= (center_x - x_pos) + y_pos) {
         img_draw_pixel(color, x_pos, y_pos);
       }
       // 左下半円
@@ -158,7 +162,7 @@ void img_draw_ring(struct Color color, double center_x, double center_y, double 
               outer_radius * outer_radius &&
           (center_x - x_pos) * (center_x - x_pos) + (center_y - y_pos) * (center_y - y_pos) >=
               inner_radius * inner_radius &&
-          center_y <= -(center_x - x_pos) + y_pos) {
+          center_y >= -(center_x - x_pos) + y_pos) {
         img_draw_pixel(color, x_pos, y_pos);
       }
     }

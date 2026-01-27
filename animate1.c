@@ -4,37 +4,36 @@
 #include "img.h"
 
 int main(void) {
-  struct color white = {255, 255, 255};
-  struct color red = {233, 51, 68};
-  struct color lightred = {245, 229, 236};
+  struct Color white = {255, 255, 255};
+  struct Color red = {233, 51, 68};
+  struct Color lightred = {245, 229, 236};
 
   int i;
   for (i = 0; i < 20; ++i) {
     // large Q
-    img_clear();
-    img_fillcircle(lightred, XCENTER, YCENTER, 90 - i);
-    img_fillcircle(white, XCENTER, YCENTER, 60 - i);
+    img_clear_canvas();
+    img_draw_ring(lightred, XCENTER, YCENTER, 90 - i, 60 - i, 0);
     int ax[4] = {XCENTER + 20 - i, XCENTER + 40 - i, XCENTER + 60 - i, XCENTER + 40 - i};
     int ay[4] = {YCENTER - 40 + i, YCENTER - 40 + i, YCENTER - 90 + i, YCENTER - 90 + i};
-    fill_scanline(lightred, ax, ay, 4);
+    img_fill_polygon(lightred, ax, ay, 4);
     // Q
-    img_filldonuts(red, 25 + i, YCENTER, 20, 15, 0);
+    img_draw_ring(red, 25 + i, YCENTER, 20, 15, 0);
     int Qx[4] = {25 + i, 30 + i, 45 + i, 40 + i};
     int Qy[4] = {YCENTER - 5, YCENTER - 5, YCENTER - 20, YCENTER - 20};
-    fill_scanline(red, Qx, Qy, 4);
+    img_fill_polygon(red, Qx, Qy, 4);
     // u
-    img_filldonuts(red, 66 + ceil(i / 1.5), YCENTER - 10, 10, 5, 2);
+    img_draw_ring(red, 66 + ceil(i / 1.5), YCENTER - 10, 10, 5, 2);
     int ux1[4] = {56 + ceil(i / 1.5), 60 + ceil(i / 1.5), 60 + ceil(i / 1.5), 56 + ceil(i / 1.5)};
     int uy1[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
     int ux2[4] = {72 + ceil(i / 1.5), 76 + ceil(i / 1.5), 76 + ceil(i / 1.5), 72 + ceil(i / 1.5)};
     int uy2[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
-    fill_scanline(red, ux1, uy1, 4);
-    fill_scanline(red, ux2, uy2, 4);
+    img_fill_polygon(red, ux1, uy1, 4);
+    img_fill_polygon(red, ux2, uy2, 4);
     // i
-    img_fillcircle(red, 90 + ceil(i / 2), YCENTER + 10, 3);
+    img_draw_filled_circle(red, 90 + ceil(i / 2), YCENTER + 10, 3);
     int ix[4] = {88 + ceil(i / 2), 92 + ceil(i / 2), 92 + ceil(i / 2), 88 + ceil(i / 2)};
     int iy[4] = {YCENTER, YCENTER, YCENTER - 20, YCENTER - 20};
-    fill_scanline(red, ix, iy, 4);
+    img_fill_polygon(red, ix, iy, 4);
     // z
     int zx1[4] = {105 + ceil(i / 4), 120 + ceil(i / 4), 120 + ceil(i / 4), 105 + ceil(i / 4)};
     int zy1[4] = {YCENTER, YCENTER, YCENTER - 5, YCENTER - 5};
@@ -42,37 +41,36 @@ int main(void) {
     int zy2[4] = {YCENTER, YCENTER, YCENTER - 20, YCENTER - 20};
     int zx3[4] = {105 + ceil(i / 4), 120 + ceil(i / 4), 120 + ceil(i / 4), 105 + ceil(i / 4)};
     int zy3[4] = {YCENTER - 15, YCENTER - 15, YCENTER - 20, YCENTER - 20};
-    fill_scanline(red, zx1, zy1, 4);
-    fill_scanline(red, zx2, zy2, 4);
-    fill_scanline(red, zx3, zy3, 4);
-    img_write();
+    img_fill_polygon(red, zx1, zy1, 4);
+    img_fill_polygon(red, zx2, zy2, 4);
+    img_fill_polygon(red, zx3, zy3, 4);
+    img_save_to_file();
   }
   for (i = 0; i < 20; ++i) {
     // large Q
-    img_clear();
-    img_fillcircle(lightred, XCENTER, YCENTER, 70 + i);
-    img_fillcircle(white, XCENTER, YCENTER, 40 + i);
+    img_clear_canvas();
+    img_draw_ring(lightred, XCENTER, YCENTER, 70 + i, 40 + i, 0);
     int ax[4] = {XCENTER + i, XCENTER + 20 + i, XCENTER + 40 + i, XCENTER + 20 + i};
     int ay[4] = {YCENTER - 20 - i, YCENTER - 20 - i, YCENTER - 70 - i, YCENTER - 70 - i};
-    fill_scanline(lightred, ax, ay, 4);
+    img_fill_polygon(lightred, ax, ay, 4);
     // Q
-    img_filldonuts(red, 45 - i, YCENTER, 20, 15, 0);
+    img_draw_ring(red, 45 - i, YCENTER, 20, 15, 0);
     int Qx[4] = {45 - i, 50 - i, 65 - i, 60 - i};
     int Qy[4] = {YCENTER - 5, YCENTER - 5, YCENTER - 20, YCENTER - 20};
-    fill_scanline(red, Qx, Qy, 4);
+    img_fill_polygon(red, Qx, Qy, 4);
     // u
-    img_filldonuts(red, 80 - ceil(i / 1.5), YCENTER - 10, 10, 5, 2);
+    img_draw_ring(red, 80 - ceil(i / 1.5), YCENTER - 10, 10, 5, 2);
     int ux1[4] = {70 - ceil(i / 1.5), 74 - ceil(i / 1.5), 74 - ceil(i / 1.5), 70 - ceil(i / 1.5)};
     int uy1[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
     int ux2[4] = {86 - ceil(i / 1.5), 90 - ceil(i / 1.5), 90 - ceil(i / 1.5), 86 - ceil(i / 1.5)};
     int uy2[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
-    fill_scanline(red, ux1, uy1, 4);
-    fill_scanline(red, ux2, uy2, 4);
+    img_fill_polygon(red, ux1, uy1, 4);
+    img_fill_polygon(red, ux2, uy2, 4);
     // i
-    img_fillcircle(red, 100 - ceil(i / 2), YCENTER + 10, 3);
+    img_draw_filled_circle(red, 100 - ceil(i / 2), YCENTER + 10, 3);
     int ix[4] = {98 - ceil(i / 2), 102 - ceil(i / 2), 102 - ceil(i / 2), 98 - ceil(i / 2)};
     int iy[4] = {YCENTER, YCENTER, YCENTER - 20, YCENTER - 20};
-    fill_scanline(red, ix, iy, 4);
+    img_fill_polygon(red, ix, iy, 4);
     // z
     int zx1[4] = {110 - ceil(i / 4), 125 - ceil(i / 4), 125 - ceil(i / 4), 110 - ceil(i / 4)};
     int zy1[4] = {YCENTER, YCENTER, YCENTER - 5, YCENTER - 5};
@@ -80,10 +78,10 @@ int main(void) {
     int zy2[4] = {YCENTER, YCENTER, YCENTER - 20, YCENTER - 20};
     int zx3[4] = {110 - ceil(i / 4), 125 - ceil(i / 4), 125 - ceil(i / 4), 110 - ceil(i / 4)};
     int zy3[4] = {YCENTER - 15, YCENTER - 15, YCENTER - 20, YCENTER - 20};
-    fill_scanline(red, zx1, zy1, 4);
-    fill_scanline(red, zx2, zy2, 4);
-    fill_scanline(red, zx3, zy3, 4);
-    img_write();
+    img_fill_polygon(red, zx1, zy1, 4);
+    img_fill_polygon(red, zx2, zy2, 4);
+    img_fill_polygon(red, zx3, zy3, 4);
+    img_save_to_file();
   }
   return 0;
 }

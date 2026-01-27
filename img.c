@@ -99,6 +99,46 @@ void img_fillcircle(struct color c, double x, double y, double r) {
 }
 
 /**
+ * 塗りつぶした円を描画する
+ * @param c 色情報
+ * @param x 中心のX座標
+ * @param y 中心のY座標
+ * @param rmax 最大半径
+ * @param rmin 最小半径
+ * @param n 描画方法指定
+ * 0で円、1で上側半円、2で下側半円、3で左上半円、4で左下半円
+ */
+void img_filldonuts(struct color c, double x, double y, double rmax, double rmin, int n) {
+  int imin = (int)(x - rmax - 1), imax = (int)(x + rmax + 1);
+  int jmin = (int)(y - rmax - 1), jmax = (int)(y + rmax + 1);
+  int i, j;
+  for (j = jmin; j <= jmax; ++j) {
+    for (i = imin; i <= imax; ++i) {
+      // 円
+      if (n == 0 && (x - i) * (x - i) + (y - j) * (y - j) <= rmax * rmax && (x - i) * (x - i) + (y - j) * (y - j) >= rmin * rmin) {
+        img_putpixel(c, i, j);
+      }
+      // 上側半円
+      if (n == 1 && (x - i) * (x - i) + (y - j) * (y - j) <= rmax * rmax && (x - i) * (x - i) + (y - j) * (y - j) >= rmin * rmin && j >= y) {
+        img_putpixel(c, i, j);
+      }
+      // 下側半円
+      if (n == 2 && (x - i) * (x - i) + (y - j) * (y - j) <= rmax * rmax && (x - i) * (x - i) + (y - j) * (y - j) >= rmin * rmin && j <= y) {
+        img_putpixel(c, i, j);
+      }
+      // 左上半円
+      if (n == 3 && (x - i) * (x - i) + (y - j) * (y - j) <= rmax * rmax && (x - i) * (x - i) + (y - j) * (y - j) >= rmin * rmin && y >= (x - i) + j) {
+        img_putpixel(c, i, j);
+      }
+      // 左下半円
+      if (n == 4 && (x - i) * (x - i) + (y - j) * (y - j) <= rmax * rmax && (x - i) * (x - i) + (y - j) * (y - j) >= rmin * rmin && y <= -(x - i) + j) {
+        img_putpixel(c, i, j);
+      }
+    }
+  }
+}
+
+/**
  * 整数比較関数（qsort用）
  * @param a 比較する要素1
  * @param b 比較する要素2

@@ -18,23 +18,18 @@ int main(void) {
     int ay[4] = {YCENTER - 40 + i, YCENTER - 40 + i, YCENTER - 90 + i, YCENTER - 90 + i};
     fill_scanline(lightred, ax, ay, 4);
     // Q
-    img_fillcircle(red, 25 + i, YCENTER, 20);
-    img_fillcircle(white, 25 + i, YCENTER, 15);
+    img_filldonuts(red, 25 + i, YCENTER, 20, 15, 0);
     int Qx[4] = {25 + i, 30 + i, 45 + i, 40 + i};
     int Qy[4] = {YCENTER - 5, YCENTER - 5, YCENTER - 20, YCENTER - 20};
     fill_scanline(red, Qx, Qy, 4);
     // u
-    img_fillcircle(red, 66 + ceil(i / 1.5), YCENTER - 10, 10);
-    img_fillcircle(lightred, 66 + ceil(i / 1.5), YCENTER - 10, 5);
+    img_filldonuts(red, 66 + ceil(i / 1.5), YCENTER - 10, 10, 5, 2);
     int ux1[4] = {56 + ceil(i / 1.5), 60 + ceil(i / 1.5), 60 + ceil(i / 1.5), 56 + ceil(i / 1.5)};
     int uy1[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
-    int ux2[4] = {61 + ceil(i / 1.5), 71 + ceil(i / 1.5), 71 + ceil(i / 1.5), 61 + ceil(i / 1.5)};
-    int uy2[4] = {YCENTER + 2, YCENTER + 2, YCENTER - 10, YCENTER - 10};
-    int ux3[4] = {72 + ceil(i / 1.5), 76 + ceil(i / 1.5), 76 + ceil(i / 1.5), 72 + ceil(i / 1.5)};
-    int uy3[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
+    int ux2[4] = {72 + ceil(i / 1.5), 76 + ceil(i / 1.5), 76 + ceil(i / 1.5), 72 + ceil(i / 1.5)};
+    int uy2[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
     fill_scanline(red, ux1, uy1, 4);
-    fill_scanline(lightred, ux2, uy2, 4);
-    fill_scanline(red, ux3, uy3, 4);
+    fill_scanline(red, ux2, uy2, 4);
     // i
     img_fillcircle(red, 90 + ceil(i / 2), YCENTER + 10, 3);
     int ix[4] = {88 + ceil(i / 2), 92 + ceil(i / 2), 92 + ceil(i / 2), 88 + ceil(i / 2)};
@@ -61,23 +56,18 @@ int main(void) {
     int ay[4] = {YCENTER - 20 - i, YCENTER - 20 - i, YCENTER - 70 - i, YCENTER - 70 - i};
     fill_scanline(lightred, ax, ay, 4);
     // Q
-    img_fillcircle(red, 45 - i, YCENTER, 20);
-    img_fillcircle(white, 45 - i, YCENTER, 15);
+    img_filldonuts(red, 45 - i, YCENTER, 20, 15, 0);
     int Qx[4] = {45 - i, 50 - i, 65 - i, 60 - i};
     int Qy[4] = {YCENTER - 5, YCENTER - 5, YCENTER - 20, YCENTER - 20};
     fill_scanline(red, Qx, Qy, 4);
     // u
-    img_fillcircle(red, 80 - ceil(i / 1.5), YCENTER - 10, 10);
-    img_fillcircle(lightred, 80 - ceil(i / 1.5), YCENTER - 10, 5);
+    img_filldonuts(red, 80 - ceil(i / 1.5), YCENTER - 10, 10, 5, 2);
     int ux1[4] = {70 - ceil(i / 1.5), 74 - ceil(i / 1.5), 74 - ceil(i / 1.5), 70 - ceil(i / 1.5)};
     int uy1[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
-    int ux2[4] = {75 - ceil(i / 1.5), 85 - ceil(i / 1.5), 85 - ceil(i / 1.5), 75 - ceil(i / 1.5)};
-    int uy2[4] = {YCENTER + 2, YCENTER + 2, YCENTER - 10, YCENTER - 10};
-    int ux3[4] = {86 - ceil(i / 1.5), 90 - ceil(i / 1.5), 90 - ceil(i / 1.5), 86 - ceil(i / 1.5)};
-    int uy3[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
+    int ux2[4] = {86 - ceil(i / 1.5), 90 - ceil(i / 1.5), 90 - ceil(i / 1.5), 86 - ceil(i / 1.5)};
+    int uy2[4] = {YCENTER, YCENTER, YCENTER - 10, YCENTER - 10};
     fill_scanline(red, ux1, uy1, 4);
-    fill_scanline(lightred, ux2, uy2, 4);
-    fill_scanline(red, ux3, uy3, 4);
+    fill_scanline(red, ux2, uy2, 4);
     // i
     img_fillcircle(red, 100 - ceil(i / 2), YCENTER + 10, 3);
     int ix[4] = {98 - ceil(i / 2), 102 - ceil(i / 2), 102 - ceil(i / 2), 98 - ceil(i / 2)};

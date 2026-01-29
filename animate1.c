@@ -58,6 +58,13 @@ int main(void) {
     img_fill_polygon(red, nx2, ny2, 4);
     // o
     img_draw_ring(red, XCENTER + 71 - ceil(i / 2), YCENTER - 10, 10, 5, 0);
+    // c
+    img_draw_ring(red, XCENTER + 98 - ceil(i / 1.5), YCENTER - 10, 10, 5, 3);
+    img_draw_ring(red, XCENTER + 98 - ceil(i / 1.5), YCENTER - 10, 10, 5, 4);
+    // k2
+    int k2x[11] = {XCENTER + 117 - i, XCENTER + 122 - i, XCENTER + 122 - i, XCENTER + 129 - i, XCENTER + 134 - i, XCENTER + 126 - i, XCENTER + 134 - i, XCENTER + 129 - i, XCENTER + 122 - i, XCENTER + 122 - i, XCENTER + 117 - i};
+    int k2y[11] = {YCENTER + 20, YCENTER + 20, YCENTER - 5, YCENTER, YCENTER, YCENTER - 8, YCENTER -20, YCENTER -20, YCENTER - 11, YCENTER - 20, YCENTER - 20};
+    img_fill_polygon(red, k2x, k2y, 11);
     img_save_to_file();
   }
   for (i = 0; i < 20; ++i) {
@@ -109,6 +116,13 @@ int main(void) {
     img_fill_polygon(red, nx2, ny2, 4);
     // o
     img_draw_ring(red, XCENTER + 61 + ceil(i / 2), YCENTER - 10, 10, 5, 0);
+    // c
+    img_draw_ring(red, XCENTER + 84 + ceil(i / 1.5), YCENTER - 10, 10, 5, 3);
+    img_draw_ring(red, XCENTER + 84 + ceil(i / 1.5), YCENTER - 10, 10, 5, 4);
+    // k2
+    int k2x[11] = {XCENTER + 97 + i, XCENTER + 102 + i, XCENTER + 102 + i, XCENTER + 109 + i, XCENTER + 114 + i, XCENTER + 106 + i, XCENTER + 114 + i, XCENTER + 109 + i, XCENTER + 102 + i, XCENTER + 102 + i, XCENTER + 97 + i};
+    int k2y[11] = {YCENTER + 20, YCENTER + 20, YCENTER - 5, YCENTER, YCENTER, YCENTER - 8, YCENTER -20, YCENTER -20, YCENTER - 11, YCENTER - 20, YCENTER - 20};
+    img_fill_polygon(red, k2x, k2y, 11);
     img_save_to_file();
   }
   return 0;

@@ -13,8 +13,10 @@ int main(void) {
     // large Q
     img_clear_canvas();
     img_draw_ring(lightred, XCENTER, YCENTER, 90 - i, 60 - i, 0);
-    int ax[4] = {XCENTER + 20 - i, XCENTER + 40 - i, XCENTER + 60 - i, XCENTER + 40 - i};
-    int ay[4] = {YCENTER - 40 + i, YCENTER - 40 + i, YCENTER - 90 + i, YCENTER - 90 + i};
+    int ax[4] = {XCENTER + 20 - ceil(i / 1.4), XCENTER + 40 - ceil(i / 1.4), XCENTER + 60 - ceil(i / 1.4),
+                 XCENTER + 40 - ceil(i / 1.4)};
+    int ay[4] = {YCENTER - 40 + ceil(i / 1.4), YCENTER - 40 + ceil(i / 1.4), YCENTER - 90 + ceil(i / 1.4),
+                 YCENTER - 90 + ceil(i / 1.4)};
     img_fill_polygon(lightred, ax, ay, 4);
     // Q
     img_draw_ring(red, 25 + i, YCENTER, 20, 15, 0);
@@ -45,14 +47,18 @@ int main(void) {
     img_fill_polygon(red, zx2, zy2, 4);
     img_fill_polygon(red, zx3, zy3, 4);
     // k1
-    int k1x[11] = {XCENTER - 5, XCENTER, XCENTER, XCENTER + 20, XCENTER + 25, XCENTER + 6, XCENTER + 25, XCENTER + 20, XCENTER, XCENTER, XCENTER -5};
-    int k1y[11] = {YCENTER + 20, YCENTER + 20, YCENTER, YCENTER + 20, YCENTER + 20, YCENTER - 2, YCENTER -20, YCENTER -20, YCENTER - 3, YCENTER - 20, YCENTER - 20};
+    int k1x[11] = {XCENTER - 5,  XCENTER,      XCENTER, XCENTER + 20, XCENTER + 26, XCENTER + 5,
+                   XCENTER + 24, XCENTER + 18, XCENTER, XCENTER,      XCENTER - 5};
+    int k1y[11] = {YCENTER + 20, YCENTER + 20, YCENTER,     YCENTER + 20, YCENTER + 20, YCENTER - 2,
+                   YCENTER - 20, YCENTER - 20, YCENTER - 3, YCENTER - 20, YCENTER - 20};
     img_fill_polygon(red, k1x, k1y, 11);
     // n
     img_draw_ring(red, XCENTER + 43 - ceil(i / 4), YCENTER - 10, 10, 5, 1);
-    int nx1[4] = {XCENTER + 33 - ceil(i / 4), XCENTER + 37 - ceil(i / 4), XCENTER + 37 - ceil(i / 4), XCENTER + 33 - ceil(i / 4)};
+    int nx1[4] = {XCENTER + 33 - ceil(i / 4), XCENTER + 37 - ceil(i / 4), XCENTER + 37 - ceil(i / 4),
+                  XCENTER + 33 - ceil(i / 4)};
     int ny1[4] = {YCENTER, YCENTER, YCENTER - 20, YCENTER - 20};
-    int nx2[4] = {XCENTER + 49 - ceil(i / 4), XCENTER + 53 - ceil(i / 4), XCENTER + 53 - ceil(i / 4), XCENTER + 49 - ceil(i / 4)};
+    int nx2[4] = {XCENTER + 49 - ceil(i / 4), XCENTER + 53 - ceil(i / 4), XCENTER + 53 - ceil(i / 4),
+                  XCENTER + 49 - ceil(i / 4)};
     int ny2[4] = {YCENTER - 10, YCENTER - 10, YCENTER - 20, YCENTER - 20};
     img_fill_polygon(red, nx1, ny1, 4);
     img_fill_polygon(red, nx2, ny2, 4);
@@ -62,8 +68,11 @@ int main(void) {
     img_draw_ring(red, XCENTER + 98 - ceil(i / 1.5), YCENTER - 10, 10, 5, 3);
     img_draw_ring(red, XCENTER + 98 - ceil(i / 1.5), YCENTER - 10, 10, 5, 4);
     // k2
-    int k2x[11] = {XCENTER + 117 - i, XCENTER + 122 - i, XCENTER + 122 - i, XCENTER + 129 - i, XCENTER + 134 - i, XCENTER + 126 - i, XCENTER + 134 - i, XCENTER + 129 - i, XCENTER + 122 - i, XCENTER + 122 - i, XCENTER + 117 - i};
-    int k2y[11] = {YCENTER + 20, YCENTER + 20, YCENTER - 5, YCENTER, YCENTER, YCENTER - 8, YCENTER -20, YCENTER -20, YCENTER - 11, YCENTER - 20, YCENTER - 20};
+    int k2x[11] = {XCENTER + 117 - i, XCENTER + 122 - i, XCENTER + 122 - i, XCENTER + 127 - i,
+                   XCENTER + 134 - i, XCENTER + 126 - i, XCENTER + 134 - i, XCENTER + 129 - i,
+                   XCENTER + 122 - i, XCENTER + 122 - i, XCENTER + 117 - i};
+    int k2y[11] = {YCENTER + 20, YCENTER + 20, YCENTER - 5,  YCENTER,      YCENTER,     YCENTER - 8,
+                   YCENTER - 20, YCENTER - 20, YCENTER - 10, YCENTER - 20, YCENTER - 20};
     img_fill_polygon(red, k2x, k2y, 11);
     img_save_to_file();
   }
@@ -71,8 +80,10 @@ int main(void) {
     // large Q
     img_clear_canvas();
     img_draw_ring(lightred, XCENTER, YCENTER, 70 + i, 40 + i, 0);
-    int ax[4] = {XCENTER + i, XCENTER + 20 + i, XCENTER + 40 + i, XCENTER + 20 + i};
-    int ay[4] = {YCENTER - 20 - i, YCENTER - 20 - i, YCENTER - 70 - i, YCENTER - 70 - i};
+    int ax[4] = {XCENTER + 5 + ceil(i / 1.4), XCENTER + 25 + ceil(i / 1.4), XCENTER + 45 + ceil(i / 1.4),
+                 XCENTER + 25 + ceil(i / 1.4)};
+    int ay[4] = {YCENTER - 25 - ceil(i / 1.4), YCENTER - 25 - ceil(i / 1.4), YCENTER - 75 - ceil(i / 1.4),
+                 YCENTER - 75 - ceil(i / 1.4)};
     img_fill_polygon(lightred, ax, ay, 4);
     // Q
     img_draw_ring(red, 45 - i, YCENTER, 20, 15, 0);
@@ -103,14 +114,18 @@ int main(void) {
     img_fill_polygon(red, zx2, zy2, 4);
     img_fill_polygon(red, zx3, zy3, 4);
     // k
-    int kx[11] = {XCENTER - 5, XCENTER, XCENTER, XCENTER + 20, XCENTER + 25, XCENTER + 6, XCENTER + 25, XCENTER + 20, XCENTER, XCENTER, XCENTER -5};
-    int ky[11] = {YCENTER + 20, YCENTER + 20, YCENTER, YCENTER + 20, YCENTER + 20, YCENTER - 2, YCENTER -20, YCENTER -20, YCENTER - 3, YCENTER - 20, YCENTER - 20};
+    int kx[11] = {XCENTER - 5,  XCENTER,      XCENTER, XCENTER + 20, XCENTER + 26, XCENTER + 5,
+                  XCENTER + 24, XCENTER + 18, XCENTER, XCENTER,      XCENTER - 5};
+    int ky[11] = {YCENTER + 20, YCENTER + 20, YCENTER,     YCENTER + 20, YCENTER + 20, YCENTER - 2,
+                  YCENTER - 20, YCENTER - 20, YCENTER - 3, YCENTER - 20, YCENTER - 20};
     img_fill_polygon(red, kx, ky, 11);
     // n
     img_draw_ring(red, XCENTER + 38 + ceil(i / 4), YCENTER - 10, 10, 5, 1);
-    int nx1[4] = {XCENTER + 28 + ceil(i / 4), XCENTER + 32 + ceil(i / 4), XCENTER + 32 + ceil(i / 4), XCENTER + 28 + ceil(i / 4)};
+    int nx1[4] = {XCENTER + 28 + ceil(i / 4), XCENTER + 32 + ceil(i / 4), XCENTER + 32 + ceil(i / 4),
+                  XCENTER + 28 + ceil(i / 4)};
     int ny1[4] = {YCENTER, YCENTER, YCENTER - 20, YCENTER - 20};
-    int nx2[4] = {XCENTER + 44 + ceil(i / 4), XCENTER + 48 + ceil(i / 4), XCENTER + 48 + ceil(i / 4), XCENTER + 44 + ceil(i / 4)};
+    int nx2[4] = {XCENTER + 44 + ceil(i / 4), XCENTER + 48 + ceil(i / 4), XCENTER + 48 + ceil(i / 4),
+                  XCENTER + 44 + ceil(i / 4)};
     int ny2[4] = {YCENTER - 10, YCENTER - 10, YCENTER - 20, YCENTER - 20};
     img_fill_polygon(red, nx1, ny1, 4);
     img_fill_polygon(red, nx2, ny2, 4);
@@ -120,8 +135,11 @@ int main(void) {
     img_draw_ring(red, XCENTER + 84 + ceil(i / 1.5), YCENTER - 10, 10, 5, 3);
     img_draw_ring(red, XCENTER + 84 + ceil(i / 1.5), YCENTER - 10, 10, 5, 4);
     // k2
-    int k2x[11] = {XCENTER + 97 + i, XCENTER + 102 + i, XCENTER + 102 + i, XCENTER + 109 + i, XCENTER + 114 + i, XCENTER + 106 + i, XCENTER + 114 + i, XCENTER + 109 + i, XCENTER + 102 + i, XCENTER + 102 + i, XCENTER + 97 + i};
-    int k2y[11] = {YCENTER + 20, YCENTER + 20, YCENTER - 5, YCENTER, YCENTER, YCENTER - 8, YCENTER -20, YCENTER -20, YCENTER - 11, YCENTER - 20, YCENTER - 20};
+    int k2x[11] = {XCENTER + 97 + i,  XCENTER + 102 + i, XCENTER + 102 + i, XCENTER + 107 + i,
+                   XCENTER + 114 + i, XCENTER + 106 + i, XCENTER + 114 + i, XCENTER + 109 + i,
+                   XCENTER + 102 + i, XCENTER + 102 + i, XCENTER + 97 + i};
+    int k2y[11] = {YCENTER + 20, YCENTER + 20, YCENTER - 5,  YCENTER,      YCENTER,     YCENTER - 8,
+                   YCENTER - 20, YCENTER - 20, YCENTER - 10, YCENTER - 20, YCENTER - 20};
     img_fill_polygon(red, k2x, k2y, 11);
     img_save_to_file();
   }

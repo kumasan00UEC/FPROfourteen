@@ -44,6 +44,20 @@ int main(void) {
     img_fill_polygon(red, zx1, zy1, 4);
     img_fill_polygon(red, zx2, zy2, 4);
     img_fill_polygon(red, zx3, zy3, 4);
+    // k1
+    int k1x[11] = {XCENTER - 5, XCENTER, XCENTER, XCENTER + 20, XCENTER + 25, XCENTER + 6, XCENTER + 25, XCENTER + 20, XCENTER, XCENTER, XCENTER -5};
+    int k1y[11] = {YCENTER + 20, YCENTER + 20, YCENTER, YCENTER + 20, YCENTER + 20, YCENTER - 2, YCENTER -20, YCENTER -20, YCENTER - 3, YCENTER - 20, YCENTER - 20};
+    img_fill_polygon(red, k1x, k1y, 11);
+    // n
+    img_draw_ring(red, XCENTER + 43 - ceil(i / 4), YCENTER - 10, 10, 5, 1);
+    int nx1[4] = {XCENTER + 33 - ceil(i / 4), XCENTER + 37 - ceil(i / 4), XCENTER + 37 - ceil(i / 4), XCENTER + 33 - ceil(i / 4)};
+    int ny1[4] = {YCENTER, YCENTER, YCENTER - 20, YCENTER - 20};
+    int nx2[4] = {XCENTER + 49 - ceil(i / 4), XCENTER + 53 - ceil(i / 4), XCENTER + 53 - ceil(i / 4), XCENTER + 49 - ceil(i / 4)};
+    int ny2[4] = {YCENTER - 10, YCENTER - 10, YCENTER - 20, YCENTER - 20};
+    img_fill_polygon(red, nx1, ny1, 4);
+    img_fill_polygon(red, nx2, ny2, 4);
+    // o
+    img_draw_ring(red, XCENTER + 71 - ceil(i / 2), YCENTER - 10, 10, 5, 0);
     img_save_to_file();
   }
   for (i = 0; i < 20; ++i) {
@@ -81,6 +95,20 @@ int main(void) {
     img_fill_polygon(red, zx1, zy1, 4);
     img_fill_polygon(red, zx2, zy2, 4);
     img_fill_polygon(red, zx3, zy3, 4);
+    // k
+    int kx[11] = {XCENTER - 5, XCENTER, XCENTER, XCENTER + 20, XCENTER + 25, XCENTER + 6, XCENTER + 25, XCENTER + 20, XCENTER, XCENTER, XCENTER -5};
+    int ky[11] = {YCENTER + 20, YCENTER + 20, YCENTER, YCENTER + 20, YCENTER + 20, YCENTER - 2, YCENTER -20, YCENTER -20, YCENTER - 3, YCENTER - 20, YCENTER - 20};
+    img_fill_polygon(red, kx, ky, 11);
+    // n
+    img_draw_ring(red, XCENTER + 38 + ceil(i / 4), YCENTER - 10, 10, 5, 1);
+    int nx1[4] = {XCENTER + 28 + ceil(i / 4), XCENTER + 32 + ceil(i / 4), XCENTER + 32 + ceil(i / 4), XCENTER + 28 + ceil(i / 4)};
+    int ny1[4] = {YCENTER, YCENTER, YCENTER - 20, YCENTER - 20};
+    int nx2[4] = {XCENTER + 44 + ceil(i / 4), XCENTER + 48 + ceil(i / 4), XCENTER + 48 + ceil(i / 4), XCENTER + 44 + ceil(i / 4)};
+    int ny2[4] = {YCENTER - 10, YCENTER - 10, YCENTER - 20, YCENTER - 20};
+    img_fill_polygon(red, nx1, ny1, 4);
+    img_fill_polygon(red, nx2, ny2, 4);
+    // o
+    img_draw_ring(red, XCENTER + 61 + ceil(i / 2), YCENTER - 10, 10, 5, 0);
     img_save_to_file();
   }
   return 0;
